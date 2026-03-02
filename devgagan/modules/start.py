@@ -194,9 +194,9 @@ async def plan(client, message):
     plan_text = (
         "💎 **Upgrade to Premium Plans** 💎\n\n"
         "Choose a plan to see full details:\n\n"
-        "🔹 Basic Plan – 300 files\n"
-        "🔸 Medium Plan – 500 files\n"
-        "🔶 Pro Plan – 1000 files\n\n"
+        "🔹 Basic Plan – 300 files by one link\n"
+        "🔸 Medium Plan – 500 files by one link\n"
+        "🔶 Pro Plan – 1000 files by one link\n\n"
         "👇 Tap a button below to view plans:"
     )
 
@@ -217,9 +217,9 @@ async def see_plan(client, callback_query):
     plan_text = (
         "💎 **Upgrade to Premium Plans** 💎\n\n"
         "Choose a plan to see full details:\n\n"
-        "🔹 Basic Plan – 300 files\n"
-        "🔸 Medium Plan – 500 files\n"
-        "🔶 Pro Plan – 1000 files\n\n"
+        "🔹 Basic Plan – 300 files by one link\n"
+        "🔸 Medium Plan – 500 files by one link\n"
+        "🔶 Pro Plan – 1000 files by one link\n\n"
         "👇 Tap a button below to view plans:"
     )
 
@@ -252,7 +252,7 @@ async def buy_basic_plan(client, callback_query):
         "💰 Rs 90 🇮🇳 / **$1.08 USDT**\n\n"
 
         "📌 **Payment Methods**:\n"
-        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1753559081448.jpg)\n"
+        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1759020164015.jpg)\n"
         "- For International payment, Contact Admin\n\n"
 
         "📤 **After Payment**:\n"
@@ -263,7 +263,7 @@ async def buy_basic_plan(client, callback_query):
 
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1753559081448.jpg")],
+            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1759020164015.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
             [InlineKeyboardButton("⬅️ Back to Plans", callback_data="see_plan")],
         ]
@@ -291,7 +291,7 @@ async def buy_medium_plan(client, callback_query):
         "💰 Rs 130 🇮🇳 / **$1.56 USDT**\n\n"
 
         "📌 **Payment Methods**:\n"
-        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1753559081448.jpg)\n"
+        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1759020164015.jpg)\n"
         "- For International payment, Contact Admin\n\n"
 
         "📤 **After Payment**:\n"
@@ -302,7 +302,7 @@ async def buy_medium_plan(client, callback_query):
 
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1753559081448.jpg")],
+            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1759020164015.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
             [InlineKeyboardButton("⬅️ Back to Plans", callback_data="see_plan")],
         ]
@@ -330,7 +330,7 @@ async def buy_pro_plan(client, callback_query):
         "💰 Rs 280 🇮🇳 / **$3.36 USDT**\n\n"
 
         "📌 **Payment Methods**:\n"
-        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1753559081448.jpg)\n"
+        "- QR Code: [Click Here for QR](https://ar-hosting.pages.dev/1759020164015.jpg)\n"
         "- For International payment, Contact Admin\n\n"
 
         "📤 **After Payment**:\n"
@@ -341,7 +341,7 @@ async def buy_pro_plan(client, callback_query):
 
     buttons = InlineKeyboardMarkup(
         [
-            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1753559081448.jpg")],
+            [InlineKeyboardButton("🧾 Get QR Code", url="https://ar-hosting.pages.dev/1759020164015.jpg")],
             [InlineKeyboardButton("💬 Contact Now", url="https://t.me/sonuporsa")],
             [InlineKeyboardButton("⬅️ Back to Plans", callback_data="see_plan")],
         ]
@@ -425,4 +425,25 @@ async def guide_page_1(_, query: CallbackQuery):
             [InlineKeyboardButton("More Features 😎", callback_data="guide_page_2")]
         ])
  )
+
+@app.on_message(filters.command("upgrade") & filters.private)
+async def plan(client, message):
+    plan_text = (
+        "💎 **Upgrade to Premium Plans** 💎\n\n"
+        "Choose a plan to see full details:\n\n"
+        "🔹 Basic Plan – 300 files by one link\n"
+        "🔸 Medium Plan – 500 files by one link\n"
+        "🔶 Pro Plan – 1000 files by one link\n\n"
+        "👇 Tap a button below to view plans:"
+    )
+
+    buttons = InlineKeyboardMarkup(
+        [
+            [InlineKeyboardButton("🔹 Buy Basic", callback_data="buy_basic")],
+            [InlineKeyboardButton("🔸 Buy Medium", callback_data="buy_medium")],
+            [InlineKeyboardButton("🔶 Buy Pro", callback_data="buy_pro")],
+        ]
+    )
+
+    await message.reply_text(plan_text, reply_markup=buttons)
 
